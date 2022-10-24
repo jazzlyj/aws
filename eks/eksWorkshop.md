@@ -152,5 +152,25 @@ kubectl get nodes
 
 
 
+### Create a dashboard
+
+```
+export DASHBOARD_VERSION="v2.6.0"
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/${DASHBOARD_VERSION}/aio/deploy/recommended.yaml
+kubectl proxy --port=8080 --address=0.0.0.0 --disable-filter=true &
+```
+
+* Get token to login 
+```
+aws eks get-token --cluster-name eksworkshop-eksctl | jq -r '.status.token'
+
+```
+
+
+*  Stop the dashboard
+```
+pkill -f 'kubectl proxy --port=8080'
+```
+
 
 
