@@ -20,9 +20,11 @@ helm show values jenkins/jenkins | less
 
 ```
 helm install jenkins jenkins/jenkins --set rbac.create=true,controller.servicePort=80,controller.serviceType=LoadBalancer
+```
+ -set controller.serviceType=LoadBalancer flag to create a Load balancer on AWS which points to Jenkins.  Jenkins will be publicly available and we can use Github webhook to send post requests on each push to Jenkins.
 
 
-
+```
 ### std out
 NAME: jenkins
 LAST DEPLOYED: Mon Oct 24 05:34:48 2022
@@ -50,12 +52,9 @@ https://jenkins.io/projects/jcasc/
 
 
 NOTE: Consider using a custom image with pre-installed plugins
-eksworkshop:~/environment $ 
-
-
-
-
 ```
+
+
 
 ### Get password
 ```
